@@ -15,8 +15,8 @@ export default function Crud({ table, title, fields, readonly, sel = '*' }) {
     if (error) return setErr(error.message); setErr(''); setF({}); load()
   }
   const del = async id => { if (!confirm('Xóa dòng này?')) return; const { error } = await sb.from(table).delete().eq('id', id); if (error) setErr(error.message); else load() }
-  const show = (r, x) => { const v = get(r, x.k); return x.t === 'number' ? vnd(v) : x.t === 'checkbox' ? (v ? '✓' : '') : x.t === 'dt' ? (v ? new Date(v).toLocaleString('vi-VN') : '') : v }
-  const shown = rows.filter(r => !q || JSON.stringify(r).toLowerCase().includes(q.toLowerCase()))
+  const show = (r, x) => { const v = get(r, x.k); return x.t === 'map' ? (x.m[v] || v) : x.t === 'number' ? vnd(v) : x.t === 'checkbox' ? (v ? '✓' : '') : x.t === 'dt' ? (v ? new Date(v).toLocaleString('vi-VN') : '') : v }
+  const shown = rows.filter(r => !q || fields.map(x => show(r, x)).join(' ').toLowerCase().includes(q.toLowerCase()))
   return (<div><h1>{title}</h1>
     {!readonly && <form className="row" onSubmit={save}>
       {fields.filter(x => !x.ro).map(x => <label key={x.k}>{x.l}
