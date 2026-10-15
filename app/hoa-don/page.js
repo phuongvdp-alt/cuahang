@@ -26,6 +26,6 @@ export default function Invoices() {
     <div className="scroll"><table><thead><tr><th>Ngày</th><th>{tab === 'ban' ? 'Khách' : 'Nhà cung cấp'}</th><th>Hàng</th><th>Tổng tiền</th><th /></tr></thead><tbody>
       {rows.map(r => <tr key={r.id}><td>{new Date(r.created_at).toLocaleString('vi-VN')}</td><td>{tab === 'ban' ? r.customer_name : S.find(x => x.id === r.supplier_id)?.name}</td>
         <td>{(r.items || []).map(i => i.name).join(', ')}</td><td>{vnd(r.total)}</td>
-        <td>{tab === 'ban' && <button className="ghost" onClick={() => setCur(r)}>In</button>}<button className="ghost" onClick={() => setEd(r)}>Sửa</button><button className="ghost" onClick={() => del(r)}>Xóa</button></td></tr>)}
+        <td>{tab === 'ban' && <button className="ghost" onClick={() => setCur(r)}>Xem / In</button>}<button className="ghost" onClick={() => setEd(r)}>Sửa</button><button className="ghost" onClick={() => del(r)}>Xóa</button></td></tr>)}
       {!rows.length && <tr><td colSpan="5">Chưa có hóa đơn.</td></tr>}</tbody></table></div>{tab === 'ban' && <Receipt sale={cur} />}</div>)
 }

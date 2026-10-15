@@ -5,7 +5,7 @@ import { sb } from '../lib/supabase'
 import NewPass from './NewPass'
 const L = [['/', 'Tổng quan'], ['/m/hang-hoa', 'Hàng hóa'], ['/m/imei', 'IMEI'], ['/nhap-hang', 'Nhập hàng'], ['/ban-hang', 'Bán hàng'],
   ['/hoa-don', 'Hóa đơn'], ['/thong-ke', 'Thống kê'], ['/sua-chua', 'Sửa chữa'], ['/bao-hanh', 'Bảo hành'], ['/m/khach-hang', 'Khách hàng'], ['/m/nha-cung-cap', 'Nhà cung cấp'],
-  ['/m/so-quy', 'Sổ quỹ'], ['/doi-mat-khau', 'Đổi mật khẩu']]
+  ['/m/so-quy', 'Sổ quỹ'], ['/cai-dat', 'Mẫu hóa đơn'], ['/doi-mat-khau', 'Đổi mật khẩu']]
 export default function Shell({ children }) {
   const [s, setS] = useState(undefined), [e, setE] = useState(''), [info, setInfo] = useState(''), [mode, setMode] = useState('login')
   useEffect(() => {
